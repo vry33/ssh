@@ -11,7 +11,7 @@ sudo apt update > /dev/null 2>&1
 #sudo apt install openssh-server > /dev/null 2>&1
 apt-get install -qq -o=Dpkg::Use-Pty=0 openssh-server pwgen > /dev/null
 pasw=$(</dev/urandom tr -dc _A-Z-a-z-0-9 | head -c12)
-echo root:$passw | passwd
+echo root:$passw | chpasswd
 mkdir -p /var/run/sshd
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
