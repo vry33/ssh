@@ -9,6 +9,8 @@ echo Updating Please Wait
 echo "======================="
 sudo apt update > /dev/null 2>&1
 sudo apt install openssh-server > /dev/null 2>&1
+pasw=$(</dev/urandom tr -dc _A-Z-a-z-0-9 | head -c12)
+echo root:$passw | chpasswd
 mkdir -p /var/run/sshd
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
@@ -18,5 +20,5 @@ sudo service ssh start
 echo "===================================="
 curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"tcp:..([^"]*).*/\1/p'
 echo create root password
-passwd
+#passwd
 echo "===================================="
