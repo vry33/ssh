@@ -8,9 +8,10 @@ echo "======================="
 echo Updating Please Wait
 echo "======================="
 sudo apt update > /dev/null 2>&1
-sudo apt install openssh-server > /dev/null 2>&1
+#sudo apt install openssh-server > /dev/null 2>&1
+sudo apt install -qq -o=Dpkg::Use-Pty=0 openssh-server pwgen > /dev/null
 pasw=$(</dev/urandom tr -dc _A-Z-a-z-0-9 | head -c12)
-echo $passw | passwd
+echo root:$passw | chpasswd
 mkdir -p /var/run/sshd
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
