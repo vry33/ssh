@@ -12,7 +12,6 @@ sudo apt update > /dev/null 2>&1
 apt-get install jq
 apt-get install -qq -o=Dpkg::Use-Pty=0 openssh-server pwgen > /dev/null
 
-
 insta=$(</dev/urandom tr -dc _A-Z-a-z-0-9 | head -c12)
 echo root:$insta | chpasswd
 mkdir -p /var/run/sshd
@@ -23,7 +22,6 @@ echo "export LD_LIBRARY_PATH" >> /root/.bashrc
 /usr/sbin/sshd -D &
 #sudo service ssh start
 echo "===================================="
-
 
 url=$(curl "http://localhost:4040/api/tunnels" | jq '.tunnels[0].public_url' | cut -d'"' -f2)
 host=$(echo $url | sed 's\:[0-9].*\\g' | sed 's\tcp://\\g')
