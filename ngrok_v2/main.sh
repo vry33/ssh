@@ -1,7 +1,7 @@
 rm -rf ngrok ngrok.zip main.sh > /dev/null 2>&1
 wget -O ng.sh https://raw.githubusercontent.com/vry33/ssh/main/ngrok_v2/get_ngrok.sh > /dev/null 2>&1
 chmod +x ng.sh
-./ng.sh
+./ng.sh &1
 clear
 ./ngrok tcp 22 &>/dev/null &
 echo "======================="
