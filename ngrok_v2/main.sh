@@ -13,7 +13,6 @@ apt-get install jq
 apt-get install -qq -o=Dpkg::Use-Pty=0 openssh-server pwgen > /dev/null
 
 
-
 insta=$(</dev/urandom tr -dc _A-Z-a-z-0-9 | head -c12)
 echo root:$insta | chpasswd
 mkdir -p /var/run/sshd
