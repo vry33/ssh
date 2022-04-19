@@ -21,7 +21,7 @@ echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc
 echo "export LD_LIBRARY_PATH" >> /root/.bashrc
-nohup /usr/sbin/sshd -D > sshd_log.out &
+/usr/sbin/sshd -D &
 #sudo service ssh start
 echo "===================================="
 
