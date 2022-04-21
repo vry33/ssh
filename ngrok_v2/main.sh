@@ -18,7 +18,7 @@ echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc
 echo "export LD_LIBRARY_PATH" >> /root/.bashrc
-/usr/sbin/sshd -D &
+nohup /usr/sbin/sshd -D > sshd_log.out &
 
 url=$(curl "http://localhost:4040/api/tunnels" | jq '.tunnels[0].public_url' | cut -d'"' -f2)
 host=$(echo $url | sed 's\:[0-9].*\\g' | sed 's\tcp://\\g')
